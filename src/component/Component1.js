@@ -4,7 +4,12 @@ class Componentone extends Component {
   render() {
     return (
       <div>
-        <h1>Hello Component 1</h1>
+       {
+        this.props.name.map(function name(val){
+            return <h1>{val}</h1>;
+        })
+       }
+       
       </div>
     )
   }

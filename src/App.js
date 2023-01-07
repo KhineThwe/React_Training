@@ -8,7 +8,7 @@ class App extends Component {
       <div>
         <h1>Hello World</h1>
         <App1/>
-        <Componentone/>
+        <Componentone name={["khine","zar","thwe"]}/>
         <Componenttwo/>
       </div>
     )
