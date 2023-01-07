@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Componentone  from './component/Component1';
+import Componenttwo  from './component/Component2';
 
 class App extends Component {
   render() {
@@ -6,6 +8,8 @@ class App extends Component {
       <div>
         <h1>Hello World</h1>
         <App1/>
+        <Componentone/>
+        <Componenttwo/>
       </div>
     )
   }
