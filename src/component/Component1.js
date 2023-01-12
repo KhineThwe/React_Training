@@ -4,12 +4,7 @@ class Componentone extends Component {
   render() {
     return (
       <div>
-       {
-        this.props.name.map(function name(val){
-            return <h1>{val}</h1>;
-        })
-       }
-       
+        <button onClick={this.props.handleclick}>{this.props.children}</button>
       </div>
     )
   }
