@@ -8,6 +8,6 @@ class Componenttwo extends Component {
       </div>
     )
   }
-}
+} 
 
 export default Componenttwo
