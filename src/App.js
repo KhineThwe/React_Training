@@ -1,27 +1,19 @@
-import React, { Component } from 'react'
-import Componentone  from './component/Component1';
-import './App.css';
-import Componenttwo  from './component/Component2';
+import React,{useState} from 'react';
+import Componentone from './component/Component1'
 
-class App extends Component {
-  register = ()=>{
-    console.log("Register");
+const App = () => {
+  const [name,setName] = useState("Kyaw Kyaw");
+
+  const ChangeName = (params)=>{
+    setName(params);
   }
-  login = ()=>{
-    console.log("Login");
-  }
-  submit = ()=>{
-    console.log("Submit");
-  }
-  render() {
-    return (
-      <div>
-        <Componentone handleclick={this.register}>First Time</Componentone>
-        <Componentone handleclick={this.login}>Second Time</Componentone>
-        <Componentone handleclick={this.submit}>Third Time</Componentone>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <h1>{name}</h1>
+      {/* <button onClick={()=>setName('Mg Mg')}>Change Name</button> */}
+      <button onClick={()=>ChangeName("This is new Params")}>Change Name</button>
+    </div>
+  )
 }
 
-export default App;
+export default App
