@@ -1,31 +1,34 @@
-import React,{useRef, useState} from 'react';
+import React,{useEffect, useRef, useState} from 'react';
 import Componentone from './component/Component1'
 
 const App = () => {
-  const [name,setName] = useState([
-    {name:"kyaw"},
-    {name:"mgmg"},
-    {name:"mama"}
-  ]);
+  const [data,setData] = useState([]);
+  const [page,setPage] = useState(1);
+  const [count,setCount] = useState(1);
   
-  const nameInput = useRef();
-  const ChangeName = (params)=>{
-    setName([...name,{name:nameInput.current.value}]);
+  useEffect(()=>{
+    fetch("https://jsonplaceholder.typicode.com/posts?_page=" + page + "&_limit=5")
+      .then((response) => response.json())
+      .then((json) => setData(json));
+  },[page]);
+  
+  const changePage = ()=>{
+    setPage((prev)=>prev+1);
   }
 
-  const deleteName = (params)=>{
-     let newval = name.filter((val)=>val.name !== params)
-     setName(newval)
+  const Count = ()=>{
+    setCount((prev)=>prev+1)
   }
+
   return (
+   
     <div>
-      {name.map((val)=>{
-        return <h1 key={val.name} onClick={()=>deleteName(val.name)}>{val.name}</h1>
+      {count}
+      {data.map((val)=>{
+        return <h1 key={val.id}>{val.title}</h1>;
       })}
-      <input type="text" ref={nameInput}/>
-      {/* <button onClick={()=>setName('Mg Mg')}>Change Name</button> */}
-      {/* <button onClick={()=>ChangeName()}>Change Name</button> */}
-      <button onClick={ChangeName}>Change Name</button>
+      <button onClick={changePage}>next</button>
+      <button onClick={Count}>Count</button>
     </div>
   )
 }
